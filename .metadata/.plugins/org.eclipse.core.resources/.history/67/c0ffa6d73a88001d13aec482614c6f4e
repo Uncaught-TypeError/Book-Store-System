@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="twinkle.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Exo:100);
+        .navbar{
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .navbar-custom {
+            background: black;
+        }
+        .nav-item, .dropdown-item{
+            font-size: 21px;
+            color: black;
+        }
+        
+        body{
+            background: black;
+        }
+
+        input[type="text"]{
+            background: transparent;
+            border: 1px solid grey;
+            color: white;
+        }
+        input[type="text"]:focus   
+        {
+            background: transparent;
+            border: 1px solid grey;
+            color: white;
+        }
+        .btn{
+            border: 0;
+            color: white;
+            border-radius: 20%;
+        }
+        .btn:hover{
+            background-color: transparent;
+            border-color: grey;
+            color: grey;
+        }
+        .dropdown-menu{
+            background: inherit;          
+        }
+        .dropdown-item{
+            color: white;
+        }
+        .dropdown-item:hover{
+            background: rgb(85, 85, 85);
+            color: white;
+        }
+
+
+        .footer{
+            position: absolute;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background: black;
+            color: white;
+        }
+
+        .icons .bx{
+            margin: 0 13px;
+            cursor: pointer;
+            padding: 18px 0;
+        }
+
+        .bxl-facebook-circle,
+        .bxl-twitter,
+        .bxl-linkedin-square,
+        .bxl-discord-alt{
+            color: rgb(255, 255, 255);
+        }
+
+        .bxl-instagram{
+            color: rgb(255, 255, 255);
+        }
+        .form-control{
+            width: 300px;
+        }
+        .form-group label{
+            color: white;
+        }
+        input[type="email"],input[type="password"],input[type="date"],input[type="search"]
+        {
+            background: transparent;
+            border: none;
+            border: 1px solid grey;
+        }
+        input[type="email"]:focus,input[type="password"]:focus,input[type="date"]:focus,input[type="search"]:focus
+        {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        .btn-primary{
+            margin: 10px 35%;
+            border: none;
+            background-color: transparent;
+        }
+        .btn-primary:hover{
+            border: none;
+            background-color: transparent;
+        }
+        .table{
+            background: black;
+            color: white;
+            width: 50vw;
+            font: 1em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+            font-weight: 600;
+        }
+        .auth{
+            position: flex;
+            text-align: center;
+        }
+        .auth1{
+            color: white;
+            font: 4em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+            font-weight: 600;
+        }
+        .table a{
+            cursor: pointer;
+        }
+        .container-fluid{
+            position:relative; 
+            height: auto;
+            top: 100px;
+        }
+        .container-fluid .btn{
+            position: relative;
+            text-shadow: 2px 2px 8px #ffffff;
+            transition: ease-in;
+            text-decoration: none;
+            font: 1.2em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+            font-weight: 600;
+        }
+        .container-fluid .btn:hover{
+            text-shadow: 2px 2px 8px #c0c0c0;
+        }
+        .container-fluid2{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin-top: 110px;
+        }
+    </style>
+    <title>BookStore</title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" th:href="@{/homepage}">
+            <img src="logo3.png" width="150" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bookform}">Add Books</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link">View Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/homepage}">Home</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" th:action="@{search-book}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Book Name" aria-label="Search" th:name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2 class="c1">Python</h2>
+    <h2 class="c2">C++</h2>
+    <h2 class="c3">Java</h2>
+    <h2 class="c4">3js</h2>
+    <h2 class="c5">C#</h2>
+    <h2 class="c6">Javascript</h2>
+    <h2 class="c7">Ruby</h2>
+    <h2 class="c8">Css</h2>
+    <h2 class="c9">PHP</h2>
+    <h2 class="c10">Swift</h2>
+    <h2 class="c11">React</h2>
+    <h2 class="c12">Angular</h2>
+    <h2 class="c13">Scala</h2>
+
+    <div class="container-fluid">
+    	<div class="auth">
+	    	<h1 class="auth1">View Order</h1>
+	        <form th:action="@{search-book}">
+	            <button class="btn btn-outline-success my-2 my-sm-0"><a th:href="@{/books}" class="btn">View All</a></button>
+	        </form>
+    	</div>
+    </div>
+     <div class="container-fluid2">
+         <table class="table table-dark table-hover">
+             <thead>
+                 <tr>
+                     <th>Customer Name</th>
+                     <th>Date</th>
+                     <th>Total Price</th>
+                     <th>Status</th>
+                     <th></th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr th:each="order:${orders}">
+                     <td th:text="${order.name}"></td>
+                     <td th:text="${order.orderdate}"></td>
+                     <td th:text="${order.totalprice}"></td>
+                     <td th:text="${order.status}"></td>
+                     <td>
+                     	<button><a>Detail</a></button>
+                     </td> 
+                 </tr>
+             </tbody>
+         </table>
+     </div>
+
+    <section class="footer">
+        <div class="icons">
+            <i class='bx bxl-facebook-circle' ></i>
+            <i class='bx bxl-twitter' ></i>
+            <i class='bx bxl-instagram' ></i>
+            <i class='bx bxl-linkedin-square' ></i>
+        </div>
+        <p>Join my Discord Server <i class='bx bxl-discord-alt' ></i></p>
+    </section>
+
+    <!-- Scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/three.js"></script>
+    <script src="js/OrbitControls.js"></script>
+</body>
+</html>

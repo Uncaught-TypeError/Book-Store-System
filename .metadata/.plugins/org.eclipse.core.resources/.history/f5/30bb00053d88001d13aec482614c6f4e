@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="twinkle.css">
+    <style>
+        
+        .navbar{
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .navbar-custom {
+            background: black;
+        }
+        .nav-item, .dropdown-item{
+            font-size: 21px;
+            color: black;
+        }
+        
+        body{
+            background: black;
+        }
+
+        input[type="search"]{
+            background: transparent;
+            border: 1px solid grey;
+            color: white;
+        }
+        input[type="search"]:focus   
+        {
+            background: transparent;
+            border: 0;
+            color: white;
+        }
+        .btn{
+            border: 0;
+            color: white;
+            border-radius: 20%;
+        }
+        .btn:hover{
+            background-color: transparent;
+            border-color: grey;
+            color: grey;
+        }
+        .dropdown-menu{
+            background: inherit;          
+        }
+        .dropdown-item{
+            color: white;
+        }
+        .dropdown-item:hover{
+            background: rgb(85, 85, 85);
+            color: white;
+        }
+
+        #container{
+            position: absolute;
+            margin: auto;
+            width: 100vw;
+            height: 80pt;
+            top: 0;
+            bottom: 0;
+            filter: url(#threshold) blur(0.6px);
+        }
+        .footer{
+            position: absolute;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background: black;
+            color: white;
+        }
+
+        .icons .bx{
+            margin: 0 13px;
+            cursor: pointer;
+            padding: 18px 0;
+        }
+
+        .bxl-facebook-circle,
+        .bxl-twitter,
+        .bxl-linkedin-square,
+        .bxl-discord-alt{
+            color: rgb(255, 255, 255);
+        }
+
+        .bxl-instagram{
+            color: rgb(255, 255, 255);
+        }
+        .carousel{
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        .card{
+            color: rgb(253, 253, 253);
+       
+        }
+        .card-body{
+            background:rgb(15, 15, 15);
+        }
+        .card-title{
+            font-family: "exo", "ubuntu","segoe ui", helvetica, arial, sans-serif;
+            font-weight: 600;
+        }
+        .card-text{
+            font-family: "exo", "ubuntu","segoe ui", helvetica, arial, sans-serif;
+        }
+        .card-img-top{
+        	width: 100%;
+        	height: 250px;
+        }
+        .button1{
+            background-color: #030303;
+            border: 1px solid transparent;
+            border-radius: .75rem;
+            box-sizing: border-box;
+            color: #919191;
+            cursor: pointer;
+            flex: 0 0 auto;
+            font-family: "exo", "ubuntu","segoe ui", helvetica, arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.5rem;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none #6B7280 solid;
+            text-decoration-thickness: auto;
+            transition-duration: .2s;
+            transition-property: background-color,border-color,color,fill,stroke;
+            transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: auto;
+        }
+
+        .button1:hover {
+        background-color: #252525;
+        }
+
+        .button1:focus {
+        box-shadow: none;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        }
+        
+        @media (min-width: 768px) {
+        .button1 {
+            padding: 5px 10px;
+        }
+        }
+        @media (max-width: 1000px) {
+        .carousel{
+        	margin-top: 1250px;
+        }
+        }
+        
+    </style>
+    <title>BookStore</title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" th:href="@{/homepage}">
+            <img src="logo3.png" width="150" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mycart}">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/books}">Books Available</a>
+                </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0" th:action="@{search-book}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Book Name" aria-label="Search" th:name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+            </form> -->
+        </div>
+    </nav>
+
+    <h2 class="c1">Python</h2>
+    <h2 class="c2">C++</h2>
+    <h2 class="c3">Java</h2>
+    <h2 class="c4">3js</h2>
+    <h2 class="c5">C#</h2>
+    <h2 class="c6">Javascript</h2>
+    <h2 class="c7">Ruby</h2>
+    <h2 class="c8">Css</h2>
+    <h2 class="c9">PHP</h2>
+    <h2 class="c10">Swift</h2>
+    <h2 class="c11">React</h2>
+    <h2 class="c12">Angular</h2>
+    <h2 class="c13">Scala</h2>
+<!-- Carousel wrapper -->
+<div id="carouselMultiItemExample" class="carousel slide carousel-white text-center" data-mdb-ride="carousel">
+    <div class="carousel-inner py-4" style="margin-top: 700px;">
+        
+    <!-- Single item -->
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row">
+                    <th:block th:each="book:${books}">
+                        <div class="col-lg-4">
+                            <div class="card" style="margin-top: 30px;">
+                                <img th:src="@{'/uploads/'+${book.img}}" class="card-img-top" />
+                                <div class="card-body">
+                                    <h5 class="card-title"  th:text="${book.title}"></h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    
+                                    <a th:href="@{'/addcart-book/'+${book.id}}" class="button1">Add to cart!</a>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>    
+                </div>
+            </div>
+        </div>
+        
+<!-- Inner -->
+    </div>
+    <section class="footer">
+	    <div class="icons">
+	        <i class='bx bxl-facebook-circle' ></i>
+	        <i class='bx bxl-twitter' ></i>
+	        <i class='bx bxl-instagram' ></i>
+	        <i class='bx bxl-linkedin-square' ></i>
+	    </div>
+	    <p>Join my Discord Server <i class='bx bxl-discord-alt' ></i></p>
+	</section>
+</div>
+<!-- Carousel wrapper -->
+
+
+
+    <!-- Scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
+</body>
+</html>

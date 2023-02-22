@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::html_head2"></head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a th:href="@{/homepage}">Home</a></li>
+                        <li class="dropdown1">
+                            <a>Books</a>
+                            <i class='bx bxs-chevron-down arrow html-arrow'></i>
+                            <ul class="dropdown-content1">
+                                <a th:href="@{/bookform}">Add Books</a>
+                                <a th:href="@{/books}">View Books</a>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown1">
+                            <a>Category</a>
+                            <i class='bx bxs-chevron-down arrow html-arrow'></i>
+                            <ul class="dropdown-content1">
+                                <a th:href="@{/categoryform}">Add Categories</a>
+                                <a th:href="@{/categorytable}">View Categories</a>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown1">
+                            <a>Author</a>
+                            <i class='bx bxs-chevron-down arrow html-arrow'></i>
+                            <ul class="dropdown-content1">
+                                <a th:href="@{/authorsform}">Add Authors</a>
+                                <a th:href="@{/authortable}">View Authors</a>
+                            </ul>
+                        </li>
+                        <li class="dropdown1">
+                            <a>Income</a>
+                            <i class='bx bxs-chevron-down arrow html-arrow'></i>
+                            <ul class="dropdown-content1">
+                                <a th:href="@{/dailyincome}">Daily Income</a>
+                                <a th:href="@{/monthlyincome}">Monthly Income</a>
+                                <a th:href="@{/yearlyincome}">Yearly Income</a>
+                            </ul>
+                        </li>
+                        <li><a th:href="@{/cusinfo}">Customer Information</a>
+                        <li><a th:href="@{/vieworder}">View Orders</a></li>
+                        <li><a th:href="@{/logout}">Log Out</a></li>
+                    </ul>
+                </nav>
+                <div th:text="${session.admin.username}"></div>&nbsp;&nbsp;
+                <img src="../images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Explore the Magical World<br>of Books!</h1>
+                    <p>Lorem ipsum dolor sit amet cons <br> adipisicing elit. Excepturi obcaecati cumqu!</p>
+                    <a th:href="@{/books}" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="../images/book.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- feature -->
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="images/java.jpg">
+                </div>
+                <div class="col-3">
+                    <img src="images/cplus.jpg">
+                </div>
+                <div class="col-3">
+                    <img src="images/ruby.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- feature products -->
+
+    <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/p1.jpeg">
+                <h4>Python for Beginners</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/p2.png">
+                <h4>Python for Kids</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$90.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/p3.jpg">
+                <h4>Python CrashCourse</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$60.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/p4.jpg">
+                <h4>Python Programming</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+        </div>
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Cshirt.jpg">
+                <h4>C# Programming Language</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$50.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/react.jpg">
+                <h4>Road to React</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$90.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/php.jpg">
+                <h4>PHP Complete Reference</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$60.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/mysql.jpg">
+                <h4>MySQL Complete Reference</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/apache.png">
+                <h4>Data-Intensive Training</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/threejs.jpg">
+                <h4>Three JS</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/vue.jpg">
+                <h4>VUE</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+            <div class="col-4">
+                <img src="images/javascriptbook.jpg">
+                <h4>JavaScript</h4>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p>$40.00</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- offer -->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/codepython.png" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusive Available</p>
+                    <h1>Python Package</h1>
+                    <small>Our Python Exclusive Package includes many courses target from Basic to Advanced. Beginners to Professional.</small>
+                    <br>
+                    <a th:href="@{/books}" class="btn">Buy Now &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Best Bookstore Ever!</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="images/user-1.png">
+                    <h3>Sean Parker</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Superb Customer Service!</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="images/user-2.png">
+                    <h3>John Doe</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Bought a book from here with no complexity!</p>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <img src="images/user-3.png">
+                    <h3>Jack Ryan</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <div th:replace="fragments::footer"></div> 
+
+    <!-- JavaScript -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "300px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

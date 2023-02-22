@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="twinkle.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Exo:100);
+        .navbar{
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .navbar-custom {
+            background: black;
+        }
+        .nav-item, .dropdown-item{
+            font-size: 21px;
+            color: black;
+        }
+        
+        body{
+            background: black;
+        }
+
+        input[type="search"]{
+            background: transparent;
+            border: 1px solid grey;
+            color: white;
+        }
+        input[type="search"]:focus   
+        {
+            background: transparent;
+            border: 0;
+            color: white;
+        }
+        .btn{
+            border: 0;
+            color: white;
+            border-radius: 20%;
+        }
+        .btn:hover{
+            background-color: transparent;
+            border-color: grey;
+            color: grey;
+        }
+        .dropdown-menu{
+            background: inherit;          
+        }
+        .dropdown-item{
+            color: white;
+        }
+        .dropdown-item:hover{
+            background: rgb(85, 85, 85);
+            color: white;
+        }
+
+        #container{
+            position: absolute;
+            margin: auto;
+            width: 100vw;
+            height: 80pt;
+            top: 0;
+            bottom: 0;
+            filter: url(#threshold) blur(0.6px);
+        }
+        
+
+        .footer{
+            position: absolute;
+            top: 1000px;
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background: black;
+            color: white;
+        }
+
+        .icons .bx{
+            margin: 0 13px;
+            cursor: pointer;
+            padding: 18px 0;
+        }
+
+        .bxl-facebook-circle,
+        .bxl-twitter,
+        .bxl-linkedin-square,
+        .bxl-discord-alt{
+            color: rgb(255, 255, 255);
+        }
+
+        .bxl-instagram{
+            color: rgb(255, 255, 255);
+        }
+        .successcontainer{
+            position: absolute;
+            height: auto; 
+            top: 50%;
+            left: 45%; 
+            transform: translate(-50%, -50%);
+        }
+        .successClass{
+            position: absolute;
+            color: white;
+            font: 4em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+            font-weight: 600;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Exo:100);
+
+	body{
+	    user-select: none;
+	}
+	.c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12,.c13{
+	    cursor: pointer;
+	    user-select: none;
+	}
+	.c1{
+	    position: absolute;
+	    left: 50%;
+	    top: 25%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 1.6s linear infinite;
+	    font: 2.5em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c2{
+	    position: absolute;
+	    left: 25%;
+	    top: 30%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 1s linear infinite;
+	    font: 1em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c3{
+	    position: absolute;
+	    left: 50%;
+	    top: 70%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 1.4s linear infinite;
+	    font: 1.8em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c4{
+	    position: absolute;
+	    left: 10%;
+	    top: 60%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2s linear infinite;
+	    font: 1.8em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c5{
+	    position: absolute;
+	    left: 10%;
+	    top: 15%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 1s linear infinite;
+	    font: 0.9em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c6{
+	    position: absolute;
+	    left: 80%;
+	    top: 50%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.5s linear infinite;
+	    font: 1.8em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c7{
+	    position: absolute;
+	    left: 80%;
+	    top: 10%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 3s linear infinite;
+	    font: 3em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c8{
+	    position: absolute;
+	    left: 25%;
+	    top: 80%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.8s linear infinite;
+	    font: 2em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c9{
+	    position: absolute;
+	    left: 80%;
+	    top: 80%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.5s linear infinite;
+	    font: 3.5em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	}
+	.c10{
+	    position: absolute;
+	    left: 10%;
+	    top: 35%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.8s linear infinite;
+	    font: 1.6em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	}  
+	.c11{
+	    position: absolute;
+	    left: 70%;
+	    top: 35%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.5s linear infinite;
+	    font: 1.4em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c12{
+	    position: absolute;
+	    left: 35%;
+	    top: 45%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2.5s linear infinite;
+	    font: 1.4em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	.c13{
+	    position: absolute;
+	    left: 60%;
+	    top: 90%;
+	    font-size: 5em;
+	    font-family: serif;
+	    color:grey;
+	    animation: animate 2s linear infinite;
+	    font: 1.6em exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+	    font-weight: 600;
+	} 
+	@keyframes animate{
+	    0%{
+	        opacity: 0;
+	    }
+	    25%{
+	        opacity: 0.2;
+	    }
+	    35%{
+	        opacity: 0.4;
+	    }
+	    50%{
+	        opacity: 0.5;
+	    }
+	    65%{
+	        opacity: 0.6;
+	    }
+	    80%{
+	        opacity: 0.7;
+	    }
+	    100%{
+	        opacity: 0;
+	    }
+	}
+    </style>
+    <title>BookStore</title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" href="#">
+            <img src="logo3.png" width="150" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/homepage}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/books}">Books Available</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/viewtotal}">Total Cart</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2 class="c1">Python</h2>
+    <h2 class="c2">C++</h2>
+    <h2 class="c3">Java</h2>
+    <h2 class="c4">3js</h2>
+    <h2 class="c5">C#</h2>
+    <h2 class="c6">Javascript</h2>
+    <h2 class="c7">Ruby</h2>
+    <h2 class="c8">Css</h2>
+    <h2 class="c9">PHP</h2>
+    <h2 class="c10">Swift</h2>
+    <h2 class="c11">React</h2>
+    <h2 class="c12">Angular</h2>
+    <h2 class="c13">Scala</h2>
+
+    <div class="successcontainer">
+        <h1 class="successClass">Success</h1>
+    </div>
+
+    <section class="footer">
+        <div class="icons">
+            <i class='bx bxl-facebook-circle' ></i>
+            <i class='bx bxl-twitter' ></i>
+            <i class='bx bxl-instagram' ></i>
+            <i class='bx bxl-linkedin-square' ></i>
+        </div>
+        <p>Join my Discord Server <i class='bx bxl-discord-alt' ></i></p>
+    </section>
+
+    <!-- Scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Book Store</title>
+</head>
+<head th:fragment="html_head2">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+    <title>Book Store</title>
+</head>
+<head th:fragment="html_head3">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <title>Book Page</title>
+</head>
+<body>
+	<div class="container" th:fragment="menu">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a th:href="@{/homepage}">Home</a></li>
+                    <li><a th:href="@{/bookform}">Add Books</a></li>
+                    <li><a th:href="@{/books}">View Books</a></li>
+                    <li><a th:href="@{/categoryform}">Add Categories</a></li>
+                    <li><a th:href="@{/categorytable}">View Categories</a></li>
+                    <li><a th:href="@{/authorsform}">Add Authors</a></li>
+                    <li><a th:href="@{/authortable}">View Authors</a></li>
+                    <li><a th:href="@{/vieworder}">View Orders</a></li>
+                    <li><a th:href="@{/dailyincome}">Daily Income</a></li>
+                    <li><a th:href="@{/monthlyincome}">Monthly Income</a></li>
+                    <li><a th:href="@{/yearlyincome}">Yearly Income</a></li>
+                    <li><a th:href="@{/logout}">Log Out</a></li>
+                </ul>
+            </nav>
+            <a th:href="@{/vieworder}"><img src="../images/cart.png" width="30px" height="30px"></a>
+            <img src="../images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    <div class="footer" th:fragment="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Our Application is still under-development.</p>
+                    <div class="app-logo">
+                        <img src="../images/play-store.png">
+                        <img src="../images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="../images/flora2.png">
+                    <p>Come visit our store to read variety of books!</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>More Contents</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us on</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div> 
+    <div class="footer" th:fragment="footer2" style="margin-top:150px;">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Our Application is still under-development.</p>
+                    <div class="app-logo">
+                        <img src="../images/play-store.png">
+                        <img src="../images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="../images/flora2.png">
+                    <p>Come visit our store to read variety of books!</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>More Contents</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us on</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div> 
+</body>
+</html>

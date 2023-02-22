@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::html_head2"></head>
+<body onload="test()">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a th:href="@{/homepage2}">Home</a></li>
+                    <li><a th:href="@{/books}">View Books</a></li>
+                    <li><a th:href="@{/mycart2}">Cart</a></li>
+                    <li><a th:href="@{/login}">Sign in/ Login</a></li>
+                </ul>
+            </nav>
+            <a th:href="@{/mycart2}"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        	<form th:action="@{search-book-cat}" style="margin-left: 20px;">
+				<input type="text" placeholder="Choose Category" list="cat" th:name="cat" style="width:150px;">
+				<datalist id="cat">
+					<option value="Viewall"></option>
+					<th:block th:each="category:${categories}">
+						<option th:value="${category.name}" th:text="${category.name}"></option>
+					</th:block>
+				</datalist>
+			</form>
+        </div>
+	</div>
+
+    <!-- feature products -->
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2>All Products</h2>
+            <!-- <form th:action="@{search-book-cat}">
+            <input type="text" placeholder="Choose Category" list="cat" th:name="cat">
+	            <datalist id="cat">
+	            	<option value="Viewall"></option>
+	            	<th:block th:each="category:${categories}">
+		                <option th:value="${category.name}" th:text="${category.name}"></option>
+	            </th:block>
+	            </datalist>
+            </form> -->   
+        </div>
+        <div class="row">
+                <div class="col-4" th:each="book:${books}">
+                    <img th:src="@{'/uploads/'+${book.img}}">
+                    <h4 th:text="${book.title}"></h4>
+                    <div class="rating"></div>
+                    <p th:text="Price + ': &nbsp;' + '&#x24' + ${book.price}"></p>
+                    <p><a th:href="@{'/productdetail/'+${book.id}}">View More Detail</a></p>
+                    <a th:href="@{'/addcart-book/'+${book.id}}" class="btn">Add to cart!</a>
+                </div>
+        </div>
+        <!-- <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594;</span>
+        </div> -->
+    </div>
+    
+    <div th:replace="fragments::footer"></div>  
+
+</body>
+
+    <script>
+	    function test(){
+	        let i = Math.floor((Math.random() * 5)+1);
+	        let j = Math.floor((Math.random() * 5)+1);
+	        // function addspace(str){
+	        //     return str.split('').join(' ');
+	        // }
+	        // const str = "fa-solid fa-star"; 
+	        for (i =0; i < j; i++){
+	            var iclass = document.createElement("i");
+	        
+	            iclass.classList.add("star");
+	            iclass.appendChild(document.createTextNode("A"));
+	            document.getElementById("rate").appendChild(iclass);
+	        }
+	    }
+    
+    </script>
+</html>

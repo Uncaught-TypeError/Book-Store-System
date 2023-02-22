@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+    <link rel="stylesheet" href="../style2.css">
+    <title>Success Page</title>
+</head>
+<body>
+<div class="container">
+        <div class="navbar">
+         	<a th:href="@{/logout}" class="btn">Log Out</a>
+        </div>
+    </div>
+
+    <!-- feature products -->
+
+	<div class="container" id="invoice">
+		<div class="row">
+			<div
+				class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<address th:each="deli:${deliinfo}">
+							<strong th:text="Name + ': &nbsp;' + ${deli.deliname}"></strong> 
+							<br>
+							<span th:text="Address + ': &nbsp;' + ${deli.deliaddress}"></span>
+							<br>
+							<span th:text="Phone + ': &nbsp;' + ${deli.phonenumber}"></span>
+						</address>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+						<p>
+							<em th:text="Date + ': &nbsp;' + ${orderinfo.orderdate}"></em>
+						</p>
+						<p>
+							<em th:text="Receipt+ '&nbsp;' + ID + '&nbsp; : &nbsp;#' + ${orderinfo.id}"></em>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-center">
+						<h1>Receipt</h1>
+					</div>
+					</span>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>#</th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="od:${cartlist}">
+								<tr>
+									<td class="col-md-9">
+										<em th:text="${od.title}"></em>
+									</td>
+									<td class="col-md-1" style="text-align: center" th:text="${od.quantity}"></td>
+									<td class="col-md-1 text-center" th:text="'&#x24;' + ${od.price}"></td>
+									<td class="col-md-1 text-center" th:text="'&#x24;' + ${od.price} * ${od.quantity}"></td>
+								</tr>
+							</th:block>
+							<tr>
+								<td> </td>
+								<td> </td>
+								<td class="text-right">
+									<p>
+										<strong>Subtotal: </strong>
+									</p>
+									<p>
+										<strong>Delivery Fees: </strong>
+									</p>
+								</td>
+								<td class="text-center">
+									<p>
+										<strong th:text="'&#x24;' + ${orderinfo.totalprice}"></strong>
+									</p>
+									<p>
+										<strong>$4.99</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td> </td>
+								<td> </td>
+								<td class="text-right"><h4>
+										<strong>Total: </strong>
+									</h4></td>
+								<td class="text-center text-danger"><h4>
+										<strong th:text="${orderinfo.totalprice} + 4.99"></strong>
+									</h4></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<strong>Thank you for shopping at Flora!</strong>
+						<p id="download" style="cursor: pointer; color:#dc591f;">Download</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- JavaScript -->
+		<script>
+			var MenuItems = document.getElementById("MenuItems");
+			MenuItems.style.maxHeight = "0px";
+
+			function menutoggle() {
+				if (MenuItems.style.maxHeight == "0px") {
+					MenuItems.style.maxHeight = "300px";
+				} else {
+					MenuItems.style.maxHeight = "0px";
+				}
+			}
+		</script>
+		<script>
+			window.onload = function(){
+				document.getElementById("download").addEventListener("click",()=>{
+					const invoice = this.document.getElementById("invoice");
+					console.log(invoice);
+					console.log(window);
+					var element = document.getElementById('element-to-print');
+					var opt = {
+					  margin:       0,
+					  filename:     'receipt.pdf',
+					  image:        { type: 'jpeg', quality: 0.98 },
+					  html2canvas:  { scale: 3 },
+					  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+					};
+					html2pdf().from(invoice).set(opt).save();
+				})
+			}
+		
+		</script>
+</body>
+</html>

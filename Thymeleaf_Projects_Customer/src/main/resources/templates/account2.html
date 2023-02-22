@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::html_head"></head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+            </div>
+            <nav>
+                
+            </nav>
+            
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- accountpage -->
+
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/book.png" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="reg()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+                        <form id="LoginForm" th:action="@{/customerLog2}" th:object="${login}" method="post">
+                            <input type="email" placeholder="Email" th:field="*{email}">
+                            <p th:text="${span}"></p>
+                            <input type="password" placeholder="Password" th:field="*{password}">
+                            <p th:text="${span}"></p>
+                            <button type="submit" class="btn">Login</button>
+                            <a href="">Forget Password</a>
+                        </form>
+
+                        <form id="RegForm" class="regform" th:action="@{/cusregis}" method="post" th:object="${register}">
+                            <input type="text" placeholder="Name" th:field="*{name}">
+                            <input type="email" placeholder="Email" th:field="*{email}">
+                            <input type="password" placeholder="Password" th:field="*{password}">
+                            <input type="text" placeholder="Phone Number" th:field="*{phone}">
+                            <input type="text" placeholder="Address" th:field="*{address}">
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments::footer"></div>
+
+    <!-- JavaScript -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "300px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+    </script>
+
+    <script>
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+
+        function reg(){
+            RegForm.style.transform = "translateX(0px)";
+            LoginForm.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";        
+        }
+        function login(){
+            RegForm.style.transform = "translateX(300px)";
+            LoginForm.style.transform = "translateX(300px)";      
+            Indicator.style.transform = "translateX(0px)";      
+        }
+
+    </script>
+
+</body>
+</html>

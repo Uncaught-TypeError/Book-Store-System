@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Product Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="images/flora1.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a th:href="@{/homepage}">Home</a></li>
+                        <li><a th:href="@{/bookform}">Add Books</a></li>
+                        <li><a th:href="@{/books}">View Books</a></li>
+                        <li><a th:href="@{/categoryform}">Add Categories</a></li>
+                        <li><a th:href="@{/categorytable}">View Categories</a></li>
+                        <li><a th:href="@{/authorsform}">Add Authors</a></li>
+                        <li><a th:href="@{/authortable}">View Authors</a></li>
+                </ul>
+            </nav>
+            <a th:href="@{/homepage}"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- feature products -->
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2>All Products</h2>
+            <select name="" id="">
+                <option value="">Default Sorting</option>
+                <option value="">Sort by Price</option>
+                <option value="">Sort by Popularity</option>
+                <option value="">Sort by Rating</option>
+                <option value="">Sort by Sale</option>
+            </select>
+        </div>
+        <div class="row">
+                <div class="col-4" th:each="book:${books}">
+                    <img th:src="@{'/uploads/'+${book.img}}">
+                    <h4 th:text="${book.title}"></h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <span><p th:text="${book.price}"></p></span>
+                </div>
+        </div>
+        <!-- <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594;</span>
+        </div> -->
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit, ad.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png">
+                        <img src="images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/flora2.png">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit, ad.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>More Contents</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us on</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div> 
+
+    <!-- JavaScript -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "300px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

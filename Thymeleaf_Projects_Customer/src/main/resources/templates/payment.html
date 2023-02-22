@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../twinkle.css">
+    <style>
+    	.p-md-5{
+    		padding: 1rem!important;
+    	}
+    	.p-4 {
+		    padding: 1rem!important;
+		}
+		.mt-3 {
+		    margin-top: 0rem!important;
+		}
+		.card.box1{
+			background-color: #dc591f;
+		}
+		.box1 .btn.btn-primary{
+			background-color: #934414;
+		}
+		.inputWithIcon span{
+			color: #dc591f;
+		}
+		.box2 .btn.btn-primary.bar{
+			color: #dc591f;
+		}
+		.box2 .btn.btn-primary.bar:hover{
+			color: #934414;
+		}
+		form .btn.btn-primary{
+			background-color: #dc591f;
+		}
+		form .btn.btn-primary:hover{
+			background-color: #934414;
+		}
+		.nav.nav-tabs .nav-item .nav-link:hover{
+			color: #934414;
+			border-bottom: 2px solid #934414;
+		}
+		.box1 .btn.btn-primary:hover
+		{
+			color: #dc591f;
+		}
+    </style>
+    
+    <title>Book Store</title>
+</head>
+<body onload="test()">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+            </div>
+        </div>
+	</div>
+
+    <!-- payment -->
+
+	<div class="container2 bg-light d-md-flex align-items-center">
+		<div class="card box1 shadow-sm p-md-5 p-md-5 p-4">
+			<div class="fw-bolder mb-4">
+				<span class="fas fa-dollar-sign"></span><span class="ps-1" th:text="${checkorder.totalprice}"></span>
+				<p th:text="${span}"></p>
+			</div>
+			<div class="d-flex flex-column">
+				<div class="d-flex align-items-center justify-content-between text">
+					<span class="">Shipping</span> <span class="fas fa-dollar-sign"><span
+						class="ps-1">Free</span></span>
+				</div>
+				<div
+					class="d-flex align-items-center justify-content-between text mb-4">
+					<span>Total</span> <span class="fas fa-dollar-sign"><span
+						class="ps-1" th:text="${checkorder.totalprice}"></span></span>
+				</div>
+				<div class="border-bottom mb-4"></div>
+				<div class="d-flex flex-column mb-4">
+					<span class="far fa-file-alt text"><span class="ps-2">Order
+							ID:</span></span> <span class="ps-3" th:text="${checkorder.id}"></span>
+				</div>
+				<div class="d-flex flex-column mb-5">
+					<span class="far fa-calendar-alt text"><span class="ps-2">Payment:</span></span> <span class="ps-3" id="payment">Credit Card</span>
+				</div>
+				<div
+					class="d-flex align-items-center justify-content-between text mt-5">
+					<div class="d-flex flex-column text">
+						<span>Customer Support:</span> <span>online chat 24/7</span>
+					</div>
+					<div class="btn btn-primary rounded-circle">
+						<span class="fas fa-comment-alt"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card box2 shadow-sm">
+			<div
+				class="d-flex align-items-center justify-content-between p-md-5 p-4">
+				<span class="h5 fw-bold m-0">Payment methods</span>
+				<div class="btn btn-primary bar">
+					<span class="fas fa-bars"></span>
+				</div>
+			</div>
+			<ul class="nav nav-tabs mb-3 px-md-4 px-2" style="cursor: pointer;">
+				<li class="nav-item"><span class="nav-link px-2"
+					aria-current="page" onclick="ccformopen()">Credit Card</span></li>
+				<li class="nav-item"><span class="nav-link px-2" onclick="codformopen()">Cash on Delivery</span></li>
+			</ul>
+			<form th:action="@{/usercardinfo}" method="post" th:object="${usercard}" enctype="multipart/form-data" id="ccform">
+				<div class="row">
+					<div class="col-12">
+					<p th:text="${span}"></p>
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Credit Card</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text"
+									placeholder="5136 1845 5468 3894" th:field="*{cardholdernumber}" th:text="${cc}" required> <span class=""> <img
+									src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png"
+									alt="" class="creditimg"></span>
+							</div>
+						</div>
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Phone Number</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text"
+									th:placeholder="${checkorder.customer.phone}" th:field="*{cardphonenumber}" required><span class="fa-solid fa-address-card"></span>
+							</div>
+						</div>
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Address</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text" th:field="*{cardholderaddress}" th:placeholder="${checkorder.customer.address}" required><span class="fa-solid fa-address-card"></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4">
+							<span>Expiration<span class="ps-1">Date</span></span>
+							<div class="inputWithIcon">
+								<input type="text" class="form-control" placeholder="05/20" th:field="*{cardexpdate}" required> <span
+									class="fas fa-calendar-alt"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="d-flex flex-column pe-md-5 px-md-0 px-4 mb-4">
+							<span>Code CVV</span>
+							<div class="inputWithIcon">
+								<input type="password" class="form-control" placeholder="123" th:field="*{cardcvv}" required>
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Name</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text"
+									th:placeholder="${checkorder.customer.name}" th:field="*{cardholdername}" required> <span class="far fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" th:name="payment" th:value="credit"/>
+					<div class="col-12 px-md-5 px-4 mt-3">
+						<button class="btn btn-primary w-100" type="submit">Proceed</button>
+					</div>
+				</div>
+			</form>
+			<form th:action="@{/usercardinfo}" id="codform" class="codform" style="display: none;" method="post" th:object="${cashdeli}" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-12">
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Email Address</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="email"
+									th:placeholder="${checkorder.customer.email}" th:field="*{cusemail}" required> <span class="fa-regular fa-envelope"></span>
+							</div>
+						</div>
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Phone Number</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text"
+									th:placeholder="${checkorder.customer.phone}" th:field="*{cusnumber}" required><span class="fa-solid fa-address-card"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Address</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text" th:field="*{cusaddress}" th:placeholder="${checkorder.customer.address}" required><span class="fa-solid fa-address-card"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="d-flex flex-column px-md-5 px-4 mb-4">
+							<span>Name</span>
+							<div class="inputWithIcon">
+								<input class="form-control" type="text"
+									th:placeholder="${checkorder.customer.name}" th:field="*{cusname}" required> <span class="far fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" th:name="payment" th:value="cash"/>
+					<div class="col-12 px-md-5 px-4 mt-3">
+						<button class="btn btn-primary w-100" type="submit">Proceed</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="fragments::footer"></div> 
+	 
+	<script>
+		var cc = document.getElementById("ccform");
+		var cod = document.getElementById("codform");
+		
+		function ccformopen(){
+			
+			cc.style.display = "block";
+			cod.style.display= "none";
+			document.getElementById('payment').innerHTML = "Credit Card"
+		}
+		
+		function codformopen(){
+			
+			cod.style.display = "block";
+			cc.style.display= "none";
+			document.getElementById('payment').innerHTML = "Cash On Delivery"
+		}
+	</script>
+</body>
+</html>

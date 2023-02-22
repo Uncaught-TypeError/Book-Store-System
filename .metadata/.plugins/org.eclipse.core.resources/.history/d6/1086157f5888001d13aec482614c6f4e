@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a96c5020c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
+    <title>Book Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a th:href="@{/homepage}"><img src="../images/flora1.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a th:href="@{/homepage}">Home</a></li>
+                    <li><a th:href="@{/bookform}">Add Books</a></li>
+                    <li><a th:href="@{/books}">View Books</a></li>
+                    <li><a th:href="@{/categoryform}">Add Categories</a></li>
+                    <li><a th:href="@{/categorytable}">View Categories</a></li>
+                    <li><a th:href="@{/authorsform}">Add Authors</a></li>
+                    <li><a th:href="@{/authortable}">View Authors</a></li>
+                </ul>
+            </nav>
+            <a href=""><img src="../images/cart.png" width="30px" height="30px"></a>
+            <img src="../images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <!-- feature products -->
+
+    <div class="small-container2">
+        <div class="row">
+            <h1>Update Book Information</h1>
+        </div>
+        <div class="row">
+            <div class="form-container3">
+                <h2>Book</h2>
+                <form th:action="@{/update-book}" th:object="${book}" method="get">
+                    <input type="text" placeholder="Update Book Title" th:field="*{title}">
+                    <input type="text" placeholder="Update ISBN" th:field="*{isbn}">
+                    <input type="number" placeholder="Update Price" th:field="*{price}">
+                    <select class="select-form" th:field="*{author}">
+                        <th:block th:each="author: ${authors}">
+                            <option th:text="${author.name}" th:value="${author.id}"></option>
+                        </th:block>
+                    </select>
+                    <select class="select-form" th:field="*{category}">
+                        <th:block th:each="category: ${categories}">
+                            <option th:text="${category.name}" th:value="${category.id}"></option>
+                        </th:block>
+                    </select>
+                    <input type="file" class="form-control" id="exampleInputAuthor1" placeholder="Choose Cover" name="picture">
+                    <input type="file" class="form-control" placeholder="Choose Cover" name="pdf">
+                    <input type="hidden" th:field="*{id}">
+                    <button type="submit" class="btn">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit, ad.</p>
+                    <div class="app-logo">
+                        <img src="../images/play-store.png">
+                        <img src="../images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="../images/flora2.png">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit, ad.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>More Contents</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us on</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div> 
+
+    <!-- JavaScript -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "300px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

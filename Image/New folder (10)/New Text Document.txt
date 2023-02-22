@@ -1,0 +1,4 @@
+John C. Shovic
+InformationTechnology
+
+Thanks to its flexibility, Python has grown to become one of the most popular programming languages in the world. Developers use Python 3 in app development, web development, data science, machine learning, and even in coding education classes.

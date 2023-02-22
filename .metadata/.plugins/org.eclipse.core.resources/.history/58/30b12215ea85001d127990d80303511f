@@ -1,0 +1,187 @@
+package com.software.test.Controllers;
+
+
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.software.test.Entity.Author;
+import com.software.test.Entity.Book;
+import com.software.test.Entity.Cart;
+import com.software.test.Entity.OrderDetail;
+import com.software.test.Entity.Orders;
+import com.software.test.Repository.BookRepository;
+import com.software.test.Repository.CustomerRepository;
+import com.software.test.Repository.OrderDetailRepository;
+import com.software.test.Repository.OrdersRepository;
+
+
+
+
+
+
+@Controller
+public class BookStore_Controller {
+	@Autowired
+	private BookRepository bookRepo;
+	
+	@Autowired
+	private CustomerRepository custRepo;
+	
+	@Autowired
+	private OrderDetailRepository orderdetRepo;
+	
+	@Autowired
+	private OrdersRepository orderRepo;
+	
+	@Autowired
+	private HttpSession session;
+	List<Cart> cartlist = new ArrayList<Cart>();
+	
+	//Home Page
+	
+	@RequestMapping("/homepage")
+	public String home() 
+	{
+		return "home";
+	}
+	
+	
+	// Book Detail
+	@GetMapping("/books")
+	public String showBooks(Model model) 
+	{
+		List<Book> books = bookRepo.findAll();
+		model.addAttribute("books", books);
+		model.addAttribute("title", "All books");
+		return "books";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping("/mycart")
+	public String myCart(Model model) 
+	{
+		cartlist = (List<Cart>) session.getAttribute("cartlist");
+		int totalPrice = 0;
+		if(cartlist != null) 
+		{
+			for (Cart c:cartlist) 
+			{
+				totalPrice += c.getPrice() * c.getQuantity();
+			}
+		}
+			
+		model.addAttribute("totalprice", totalPrice);
+		model.addAttribute("cartlist", cartlist);
+		
+		return "cart";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping("/addcart-book/{id}")
+	public String addCart(@PathVariable(name="id") Integer id, Model model)
+	{	
+		boolean flag = false;
+		
+		Book book = bookRepo.findById(id).get();
+		if(session.getAttribute("cartlist")!= null) 
+		{
+			
+			cartlist = (List<Cart>) session.getAttribute("cartlist");
+			for (Cart c:cartlist) 
+			{
+				if(id == c.getId())
+				{
+					c.setQuantity(c.getQuantity()+1);
+					flag = true;
+					break;
+				}
+			}
+			if (!flag)
+			{
+				Cart cart = new Cart();
+				cart.setId(book.getId());
+				cart.setTitle(book.getTitle());
+				cart.setIsbn(book.getIsbn());
+				cart.setPrice(book.getPrice());
+				cart.setAuthor(book.getAuthor());
+				cart.setCategory(book.getCategory());
+				cart.setImg(book.getImg());
+				cart.setPdfile(book.getPdfile());
+				cart.setQuantity(1);
+				
+				cartlist.add(cart);
+				session.setAttribute("cartlist", cartlist);
+			}
+		}
+		else 
+		{
+			cartlist = new ArrayList<Cart>();
+			Cart cart = new Cart();
+			cart.setId(book.getId());
+			cart.setTitle(book.getTitle());
+			cart.setIsbn(book.getIsbn());
+			cart.setPrice(book.getPrice());
+			cart.setAuthor(book.getAuthor());
+			cart.setCategory(book.getCategory());
+			cart.setImg(book.getImg());
+			cart.setPdfile(book.getPdfile());
+			cart.setQuantity(1);
+			
+			cartlist.add(cart);
+			session.setAttribute("cartlist", cartlist);
+		}
+		return "redirect:/books";
+	}
+	
+	@GetMapping("/checkout")
+	public String checkoutcart() 
+	{
+		Orders order = new Orders();
+		order.setOrderdate(LocalDate.now());
+		int totalPrice = 0;
+		if(cartlist != null) 
+		{
+			for (Cart c:cartlist) 
+			{
+				totalPrice += c.getPrice() * c.getQuantity();
+			}
+		}
+			
+		order.setTotalprice(totalPrice);
+		order.setStatus("pending");
+		orderRepo.save(order);
+		
+		for (Cart c:cartlist) 
+		{
+			OrderDetail od = new OrderDetail();
+			od.setQuantity(c.getQuantity());
+			od.setQuanprice(c.getQuantity() * c.getPrice());
+			od.setBook(new Book(c.getId(), c.getTitle(), c.getIsbn(), c.getPrice(), c.getAuthor(), c.getCategory(), c.getImg(), c.getPdfile()));
+			orderdetRepo.save(od);
+		}
+		
+		return "success";
+		
+	}
+	
+	@GetMapping("/viewtotal")
+	public String totalcart() 
+	{
+		
+	}
+	
+}
